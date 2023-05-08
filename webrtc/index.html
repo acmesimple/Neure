@@ -1,0 +1,31 @@
+<button onclick="opt.open()">connect</button>
+<button onclick="opt.send()">send</button>
+<button onclick="opt.close()">close</button>
+<script>
+    var opt = {
+        url: "ws://120.53.117.98:35",
+        open() {
+            this.socket = new WebSocket(this.url)
+            this.socket.onopen = () => console.log("connect success")
+            this.socket.onmessage = e => console.log(e.data)
+        },
+        close(){
+            this.socket.close()
+        },
+        send() {
+            var jwt = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50IjogImN1aXlpbnBpbmdAdGVybnkuY24iLCAibmFtZSI6ICJcdThmNjZcdTVmNmNcdTVmNmMiLCAiaWNvbiI6ICJodHRwczovL2ltYWdlLmJhaWR1LmNvbS9zZWFyY2gvZGV0YWlsP2N0PTUwMzMxNjQ4MCZ6PXVuZGVmaW5lZCZ0bj1iYWlkdWltYWdlZGV0YWlsJmlwbj1kJndvcmQ9JUU1JUE0JUI0JUU1JTgzJThGJnN0ZXBfd29yZD0maWU9dXRmLTgmaW49JmNsPTImbG09LTEmc3Q9dW5kZWZpbmVkJmhkPXVuZGVmaW5lZCZsYXRlc3Q9dW5kZWZpbmVkJmNvcHlyaWdodD11bmRlZmluZWQmY3M9MjgzNTUyMzc1OCwxMTEwMjMxMTE3Jm9zPTE4NDI3NzM0ODEsNjY3Njk5NTEyJnNpbWlkPTI4MzU1MjM3NTgsMTExMDIzMTExNyZwbj01NSZybj0xJmRpPTcyMTQ4ODUzNTAzMDMzMzQ0MDEmbG49MTg5NSZmcj0mZm1xPTE2ODE4MDkxNzc5NTJfUiZmbT0maWM9dW5kZWZpbmVkJnM9dW5kZWZpbmVkJnNlPSZzbWU9JnRhYj0wJndpZHRoPXVuZGVmaW5lZCZoZWlnaHQ9dW5kZWZpbmVkJmZhY2U9dW5kZWZpbmVkJmlzPTAsMCZpc3R5cGU9MCZpc3Q9JmppdD0mYmR0eXBlPTAmc3BuPTAmcGk9MCZnc209MWUmb2JqdXJsPWh0dHBzJTNBJTJGJTJGZ2ltZzIuYmFpZHUuY29tJTJGaW1hZ2Vfc2VhcmNoJTJGc3JjJTNEaHR0cCUyNTNBJTI1MkYlMjUyRmMtc3NsLmR1aXRhbmcuY29tJTI1MkZ1cGxvYWRzJTI1MkZpdGVtJTI1MkYyMDIwMDIlMjUyRjI2JTI1MkYyMDIwMDIyNjIwNDQ0OF9zWlN1bi50aHVtYi4xMDAwXzAuanBlZyUyNnJlZmVyJTNEaHR0cCUyNTNBJTI1MkYlMjUyRmMtc3NsLmR1aXRhbmcuY29tJTI2YXBwJTNEMjAwMiUyNnNpemUlM0RmOTk5OSUyQzEwMDAwJTI2cSUzRGE4MCUyNm4lM0QwJTI2ZyUzRDBuJTI2Zm10JTNEYXV0byUzRnNlYyUzRDE2ODQ0MDExNzglMjZ0JTNENWZhMjdiMGQ5YTk0NDQyNjY0YjEyZjI4MTcyYWFhYjEmcnBzdGFydD0wJnJwbnVtPTAmYWRwaWNpZD0wJm5vamM9dW5kZWZpbmVkJmR5VGFiU3RyPU1DdzJMRE1zTVN3MExEVXNNaXczTERnc09RJTNEJTNEIiwgImV4cCI6IDE2ODI2MDIwNDEsICJhdWQiOiAidGVybnkuY24ifQ.NAaUIyshtu5mCXd-EA2GEbSydiMw0I-goGP4DccYw0h_6fu2fdt-e1v4ddDrXBJ76_q3E9lJBXxc4vQT57lAyimCHgi_mfBufmSqiknsGppfNrRpJFm3wKOvjvpWNQkJuY79t5tGzKgs-EZ-jaXyydy5sK204QPa5m5y0bIGJvY"
+            var basic = "Basic Y3VpeWlucGluZ0B0ZXJueS5jbjpiaW5iaW4="
+
+            var para = {
+                id: "fdsfsfsfd",//此处生成消息的uuid
+                type: "msg/get",
+                authorization: basic,
+                data: {
+                    // token:true,
+                    user: true
+                }
+            }
+            this.socket.send(JSON.stringify(para))
+        }
+    }
+</script>

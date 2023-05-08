@@ -1,0 +1,14 @@
+{
+    "name":"Neure",
+    "start_url":"/",
+    "theme_color": "#ffffff",
+    "background_color": "#bcc2ca",
+    "display": "standalone",
+    "icons":[
+        {
+            "src": "/resources/icons/logo.png",
+            "sizes": "200x200",
+            "type": "image/png"
+        }
+    ]
+}

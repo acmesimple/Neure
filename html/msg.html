@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="resources/icons/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="resources/manifest.json">
+    <link rel="stylesheet" href="resources/main.css">
+    <title>Neure</title>
+</head>
+
+<body>
+    <div class="flex h-full">
+        <!-- left -->
+        <div class="flex-y h-full select-none br" style="width: 250px;">
+            <!-- 搜索栏 -->
+            <div class="p-15 flex">
+                <div class="round-5 bg-gray-50 flex">
+                    <div style="padding: 5px 0px 0px 5px;">
+                        <svg viewBox="0 0 1024 1024" width="16" fill="#666666">
+                            <path
+                                d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z">
+                            </path>
+                        </svg>
+                    </div>
+                    <input style="width: 160px;" class="p-5 transparent">
+                </div>
+                <div style="padding: 5px 5px 0px;" class="ml-10 bg-gray-50 round-5">
+                    <svg viewBox="0 0 1024 1024" fill="#666666" width="16">
+                        <path
+                            d="M832 490.666667H533.333333V194.133333c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333V490.666667l-298.666667-2.133334c-12.8 0-21.333333 8.533333-21.333333 21.333334s8.533333 21.333333 21.333333 21.333333l298.666667 2.133333v298.666667c0 12.8 8.533333 21.333333 21.333333 21.333333s21.333333-8.533333 21.333333-21.333333V533.333333h298.666667c12.8 0 21.333333-8.533333 21.333333-21.333333 0-10.666667-10.666667-21.333333-21.333333-21.333333z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            <!-- 联系人 -->
+            <div class="flex-grow scroll-y">
+                <div class="p-15 flex">
+                    <img class="contact_img"
+                        src="https://img1.baidu.com/it/u=22553051,3834724655&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <div class="contact_right">
+                        <div class="contact_name">
+                            车夏
+                        </div>
+                        <div class="contact_lstMsg">在吗？吃饭了吗？😄</div>
+                    </div>
+                </div>
+                <div class="p-15 flex bg-gray-50">
+                    <img class="contact_img"
+                        src="https://img1.baidu.com/it/u=22553051,3834724655&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <div class="contact_right">
+                        <div class="contact_name">
+                            崔银平
+                        </div>
+                        <div class="contact_lstMsg">在吗？吃饭了吗？😄</div>
+                    </div>
+                </div>
+                <div class="p-15 flex">
+                    <img class="contact_img"
+                        src="https://img1.baidu.com/it/u=22553051,3834724655&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <div class="contact_right">
+                        <div class="contact_name">
+                            车彬彬
+                        </div>
+                        <div class="contact_lstMsg">在吗？吃饭了吗？😄</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- right -->
+        <div class="h-full flex-grow flex-y">
+            <div class="p-10 flex-grow scroll-y">
+                <!-- 消息 -->
+                <div class="p-15 flex">
+                    <img class="msg_img"
+                        src="https://img1.baidu.com/it/u=22553051,3834724655&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <div class="msg_right">
+                        <div class="msg_user_name">
+                            崔银平 <span class="pl-10">2023/04/30 13:56</span>
+                        </div>
+                        <div class="msg_data">在吗？吃饭了吗？😄</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-10 flex align-end scroll">
+                <div class="pr-10">
+                    <svg viewBox="0 0 1024 1024" height="20">
+                        <path
+                            d="M160 640h-64V384h64v256z m768-256h-64v256h64V384z m-576-64h-64v384h64V320z m384 0h-64v384h64V320zM544 192h-64v640h64V192z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex-grow scroll pb-5">
+                    <div contenteditable></div>
+                </div>
+                <div class="flex">
+                    <div class="px-10">
+                        <svg viewBox="0 0 1024 1024" height="20">
+                            <path
+                                d="M282.4 460C344 580.8 443.2 680 564 741.6L657.6 648c11.2-11.2 28.8-15.2 43.2-10.4 48 16 100 24 152.8 24 23.2 0 42.4 19.2 42.4 42.4v148.8c0 23.2-19.2 42.4-42.4 42.4C452.8 896 128 571.2 128 170.4c0-23.2 19.2-42.4 42.4-42.4H320c23.2 0 42.4 18.4 42.4 41.6 0 53.6 8.8 104.8 24 152.8 4.8 15.2 1.6 31.2-10.4 43.2L282.4 460z"></path>
+                        </svg>
+                    </div>
+                    <div class="px-10">
+                        <svg viewBox="0 0 1024 1024" height="20">
+                            <path
+                                d="M724.032 564.608v-105.6c0-10.56 3.52-22.72 8.384-27.776l115.584-118.976c37.824-38.912 81.344-49.856 81.344-8.128v415.424c0 41.664-43.52 30.784-81.344-8.128l-115.584-118.976c-4.864-4.992-8.384-17.216-8.384-27.84zM669.376 681.792a64 64 0 0 1-64 64h-446.72a64 64 0 0 1-64-64V341.76a64 64 0 0 1 64-64h446.72a64 64 0 0 1 64 64v340.032z"></path>
+                        </svg>
+                    </div>
+                    <div class="px-10">
+                        <svg viewBox="0 0 1024 1024" height="20">
+                            <path
+                                d="M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM864 544H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script src="resources/js/alpine.min.js" defer></script>
+<script>
+    console.log(self==opener)
+    console.log(self==parent)
+    console.log(self==top)
+</script>
+
+<style>
+    /* 联系人 */
+    .contact_img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+    }
+
+    .contact_right {
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
+    .contact_lstMsg {
+        font-size: 8px;
+        color: #0326;
+        padding-top: 5px;
+    }
+
+    /* 消息 */
+    .msg_img {
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
+    }
+
+    .msg_right {
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
+    .msg_user_name,
+    .msg_user_name span {
+        font-size: 8px;
+        color: #0326;
+    }
+</style>
+<script>
+
+</script>

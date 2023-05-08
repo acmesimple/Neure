@@ -1,0 +1,37 @@
+const Store = require("./Store")
+const { WebSocketServer } = require("ws")
+
+var obj = {
+    parent: "",
+    account: "chebinbin@terny.cn",
+    pwd: "binbin",
+    whitelist: "contacts",
+    blacklist: ["terny@terny.cn"],
+    router: "contacts",
+    contacts: [
+        {
+            account: "Fantasy@terny.cn",
+            nickname: "范特西",
+        }
+    ],
+    // 非必选项
+    name: "车彬彬",
+    icon: "https://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E5%A4%B4%E5%83%8F&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=2835523758,1110231117&os=1842773481,667699512&simid=2835523758,1110231117&pn=55&rn=1&di=7214885350303334401&ln=1895&fr=&fmq=1681809177952_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=1e&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%253A%252F%252Fc-ssl.duitang.com%252Fuploads%252Fitem%252F202002%252F26%252F20200226204448_sZSun.thumb.1000_0.jpeg%26refer%3Dhttp%253A%252F%252Fc-ssl.duitang.com%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Dauto%3Fsec%3D1684401178%26t%3D5fa27b0d9a94442664b12f28172aaab1&rpstart=0&rpnum=0&adpicid=0&nojc=undefined&dyTabStr=MCw2LDMsMSw0LDUsMiw3LDgsOQ%3D%3D",
+    tel: "15222395312",
+    time: "2023-4-18 17:11:34"
+}
+var opt = {
+    run() {
+        this.store = new Store()
+        new WebSocketServer({ port: 35 }).on('connection', ws => {
+            ws.on('message', d => {
+                var data=d.toString()
+                console.log(data)
+                ws.send(data)
+            })
+        })
+    }
+}
+
+store=new Store()
+store.set(obj.account,obj)

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="resources/icons/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="resources/manifest.json">
+    <link rel="stylesheet" href="resources/main.css">
+    <title>Neure</title>
+</head>
+
+<body x-data="app" class="select-none">
+    <!-- 主区域 -->
+    <template x-if="user">
+        <div class="flex h-full">
+            <div class="text-center pt-20 h-full br">
+                <div class="p-10">
+                    <img @click="set.show=true" class="round-5" style="width: 35px;" :src="user.icon">
+                </div>
+                <template  x-for="(menu,i) in user.app.dock">
+                    <div @click="idx=i" class="px-15 pt-20 dock" x-html="menu.icon"></div>
+                </template>
+            </div>
+            <div class="flex-grow h-full">
+                <template  x-for="(menu,i) in user.app.dock">
+                    <iframe x-show="idx==i" class="w-full h-full" :src="menu.url"></iframe>
+                </template>
+            </div>
+        </div>
+    </template>
+    <!-- 登录 -->
+    <template x-if="!user">
+        <div class="h-full flex justify-center align-center" style="padding-bottom: 60px;">
+            <div class="flex shadow-2 round-5">
+                <input class="p-10  br-1" placeholder="Account" x-model="form.account">
+                <input class="p-10" placeholder="password" type="password" x-model="form.pwd">
+                <button class="p-10 bg-black" @click="login(form)">Submit</button>
+            </div>
+        </div>
+    </template>
+    <!-- write -->
+    <template x-if="set.show">
+        <div class="shadow-3 bg-white round-10 setForm">
+            <div class="flex justify-between">
+                <div class="p-7">Set user</div>
+                <div class="flex">
+                    <div class="p-7" @click="set.show=false">Cancel</div>
+                    <div class="p-7 pr-10" @click="set.save">Save</div>
+                </div>
+            </div>
+            <textarea x-model="set.data" class="p-10 bg-black w-full" style="min-height: 500px;"></textarea>
+        </div>
+    </template>
+</body>
+
+</html>
+
+<script src="resources/js/alpine.min.js" defer></script>
+<script src="resources/js/neure.js"></script>
+<script>
+    var neure=new Neure("ws://120.53.117.98:35")
+    var app={
+        set:{
+            show:false,
+            data:JSON.stringify(neure.user,null,"\t"),
+            async save(){
+                this.set.show=false
+                if(!this.set.data)return
+                var data=JSON.parse(this.set.data)
+                var res=await neure.setUser(data)
+                if(res)this.user=res
+            }
+        },
+        idx:0,
+        form:{},
+        user:neure.user,
+        async login(para){
+            var res=await neure.login(para)
+            if(res.code)return alert(res.data)
+            this.user=res.data.user
+        }
+    }
+</script>
+<style>
+    .dock svg{
+        fill:#0009;
+    }
+    body {
+        backdrop-filter: blur(50px);
+        /* background: url(https://res.wx.qq.com/t/wx_fed/webwx/res/static/img/2zrdI1g.jpg) no-repeat; */
+        background-size: cover;
+    }
+    .setForm{
+        position: fixed;
+        top:50px;
+        left: 60px; 
+        z-index: 5;
+        width: 700px;
+    }
+</style>
