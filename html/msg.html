@@ -10,7 +10,7 @@
     <title>Neure</title>
 </head>
 
-<body>
+<body x-data="data">
     <div class="flex h-full">
         <!-- left -->
         <div class="flex-y h-full select-none br" style="width: 250px;">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="p-10 flex align-end scroll">
-                <div class="pr-10">
+                <div class="pr-10" @click="send">
                     <svg viewBox="0 0 1024 1024" height="20">
                         <path
                             d="M160 640h-64V384h64v256z m768-256h-64v256h64V384z m-576-64h-64v384h64V320z m384 0h-64v384h64V320zM544 192h-64v640h64V192z">
@@ -92,25 +92,28 @@
                     </svg>
                 </div>
                 <div class="flex-grow scroll pb-5">
-                    <div contenteditable></div>
+                    <div contenteditable id="message" @keydown="keydown"></div>
                 </div>
                 <div class="flex">
                     <div class="px-10">
                         <svg viewBox="0 0 1024 1024" height="20">
                             <path
-                                d="M282.4 460C344 580.8 443.2 680 564 741.6L657.6 648c11.2-11.2 28.8-15.2 43.2-10.4 48 16 100 24 152.8 24 23.2 0 42.4 19.2 42.4 42.4v148.8c0 23.2-19.2 42.4-42.4 42.4C452.8 896 128 571.2 128 170.4c0-23.2 19.2-42.4 42.4-42.4H320c23.2 0 42.4 18.4 42.4 41.6 0 53.6 8.8 104.8 24 152.8 4.8 15.2 1.6 31.2-10.4 43.2L282.4 460z"></path>
+                                d="M282.4 460C344 580.8 443.2 680 564 741.6L657.6 648c11.2-11.2 28.8-15.2 43.2-10.4 48 16 100 24 152.8 24 23.2 0 42.4 19.2 42.4 42.4v148.8c0 23.2-19.2 42.4-42.4 42.4C452.8 896 128 571.2 128 170.4c0-23.2 19.2-42.4 42.4-42.4H320c23.2 0 42.4 18.4 42.4 41.6 0 53.6 8.8 104.8 24 152.8 4.8 15.2 1.6 31.2-10.4 43.2L282.4 460z">
+                            </path>
                         </svg>
                     </div>
                     <div class="px-10">
                         <svg viewBox="0 0 1024 1024" height="20">
                             <path
-                                d="M724.032 564.608v-105.6c0-10.56 3.52-22.72 8.384-27.776l115.584-118.976c37.824-38.912 81.344-49.856 81.344-8.128v415.424c0 41.664-43.52 30.784-81.344-8.128l-115.584-118.976c-4.864-4.992-8.384-17.216-8.384-27.84zM669.376 681.792a64 64 0 0 1-64 64h-446.72a64 64 0 0 1-64-64V341.76a64 64 0 0 1 64-64h446.72a64 64 0 0 1 64 64v340.032z"></path>
+                                d="M724.032 564.608v-105.6c0-10.56 3.52-22.72 8.384-27.776l115.584-118.976c37.824-38.912 81.344-49.856 81.344-8.128v415.424c0 41.664-43.52 30.784-81.344-8.128l-115.584-118.976c-4.864-4.992-8.384-17.216-8.384-27.84zM669.376 681.792a64 64 0 0 1-64 64h-446.72a64 64 0 0 1-64-64V341.76a64 64 0 0 1 64-64h446.72a64 64 0 0 1 64 64v340.032z">
+                            </path>
                         </svg>
                     </div>
                     <div class="px-10">
                         <svg viewBox="0 0 1024 1024" height="20">
                             <path
-                                d="M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM864 544H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z"></path>
+                                d="M864 144H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM864 544H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zM464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16z">
+                            </path>
                         </svg>
                     </div>
                 </div>
@@ -124,9 +127,46 @@
 
 <script src="resources/js/alpine.min.js" defer></script>
 <script>
-    console.log(self==opener)
-    console.log(self==parent)
-    console.log(self==top)
+    //opener、parent、top
+    var neure = top.neure
+    neure.on("msg/html", e => {
+        console.log("recive", e.data)
+    })
+    // 光标聚焦到最后
+    function placeCaretAtEnd(el) {
+        el.focus();
+        if (typeof window.getSelection != "undefined"
+                && typeof document.createRange != "undefined") {
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            range.collapse(false);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } else if (typeof document.body.createTextRange != "undefined") {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(el);
+            textRange.collapse(false);
+            textRange.select();
+        }
+    }
+    var data = {
+        keydown(e) {
+            if (e.keyCode != 13) return
+            e.preventDefault()
+            if (!e.metaKey) return data.send()
+            var el = document.getElementById("message")
+            el.innerHTML+="<br><br>"
+            placeCaretAtEnd(el)
+        },
+        async send() {
+            var el=document.getElementById("message")
+            var msg = el.innerHTML.trim()
+            if (!msg) return false
+            var res = await neure.send("msg/html", msg, neure.user.account)
+            el.innerHTML=""
+        }
+    }
 </script>
 
 <style>

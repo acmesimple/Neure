@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from datetime import datetime
+import time
 from inspect import isfunction
 import re
 
@@ -11,7 +11,7 @@ def success(msg,data="success",code=0):
         "type":msg.get("type"),
         "code":code,
         "data":data,
-        "time":datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "time":round(time.time())
     }
     
 def error(msg,data="fail",code=1):

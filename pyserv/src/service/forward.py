@@ -20,7 +20,7 @@ async def forward(account, msg):
         raise Exception("route format error")
     arr = dst.split("@")
     if arr[1] in config.host:
-        return sendin(account, msg)
+        return await sendin(account, msg)
     else:
         return sendout(account, msg)
 
@@ -31,7 +31,7 @@ def sendout(account, msg):
 
 
 # send to this server clients
-def sendin(account, msg):
+async def sendin(account, msg):
     route = msg.get("route")
     dst = route[len(route)-1]
     route.insert(len(route)-2, account)
@@ -40,11 +40,13 @@ def sendin(account, msg):
     if checkRes["code"] > 0:
         return checkRes
     # send
+    msg=msg.copy()
+    del msg["authorization"]
     conns = store.connections.get(dst)
     if len(conns) < 1:
         return util.error(msg,"user not online",402)
     for conn in conns:
-        conn.send(json.dumps(msg))
+        await conn.send(json.dumps(msg))
     # route
     
     return checkRes
@@ -56,8 +58,8 @@ def userCheck(account, msg,dst):
     if not user:
         return util.error(msg, "user not exit", 404)
     black = user.get("blacklist")
-    white = user.ge("whitelist")
-    contacts = user.ge("contacts")
+    white = user.get("whitelist")
+    contacts = user.get("contacts")
     if black == "contacts":
         black = contacts
     if white == "contacts":
